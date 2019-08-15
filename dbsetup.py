@@ -1,14 +1,14 @@
 import mysql.connector
 
 user = 'root'
-password = 'password'
+password = 'qlalfqjsgh1!'
 # database = 'yelp'
 
 # conn = mysql.connector.connect(user=user, passwd=password, database=database)
 conn = mysql.connector.connect(user=user, passwd=password)
 cur = conn.cursor()
 
-sql = 'DROP DATABASE yelp'
+sql = 'DROP DATABASE IF EXISTS yelp'
 cur.execute(sql)
 
 sql = 'CREATE DATABASE IF NOT EXISTS yelp CHARACTER SET utf8 collate utf8_general_ci;'
@@ -17,23 +17,23 @@ cur.execute(sql)
 sql = 'USE yelp'
 cur.execute(sql)
 
-sql = 'DROP TABLE business'
+sql = 'DROP TABLE IF EXISTS business'
 cur.execute(sql)
 
-sql = 'DROP TABLE review'
+sql = 'DROP TABLE IF EXISTS review'
 cur.execute(sql)
 
-sql = 'DROP TABLE tip'
+sql = 'DROP TABLE IF EXISTS tip'
 cur.execute(sql)
 
 sql = '''CREATE TABLE IF NOT EXISTS business (
 	bid VARCHAR(30),
-	name MIDTEXT,
+	name TEXT,
 	city VARCHAR(255),
 	state VARCHAR(10),
 	stars FLOAT,
 	review_count INT,
-	categories MIDTEXT,
+	categories TEXT,
 	PRIMARY KEY (bid)
 ) character set utf8 collate utf8_general_ci'''
 cur.execute(sql)
@@ -43,18 +43,18 @@ sql = '''CREATE TABLE IF NOT EXISTS review (
 	uid VARCHAR(30),
 	bid VARCHAR(30),
 	star INT,
-	text MIDTEXT,
+	text TEXT,
 	PRIMARY KEY (rid),
-	FOREIGN KEY (bid) REFERENCE business(bid) ON DELETE CASCADE
+	FOREIGN KEY (bid) REFERENCES business(bid) ON DELETE CASCADE
 ) character set utf8 collate utf8_general_ci'''
 cur.execute(sql)
 
 sql = '''CREATE TABLE IF NOT EXISTS tip (
-	text MIDTEXT,
+	text TEXT,
 	compliment_count INT,
 	bid VARCHAR(30),
 	uid VARCHAR(30),
-	FOREIGN KEY (bid) REFERENCE business(bid) ON DELETE CASCADE
+	FOREIGN KEY (bid) REFERENCES business(bid) ON DELETE CASCADE
 ) character set utf8 collate utf8_general_ci'''
 cur.execute(sql)
 
