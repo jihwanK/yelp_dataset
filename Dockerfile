@@ -10,3 +10,4 @@ RUN pip3 install mysql-connector-python
 # for mysql
 RUN service mysql start
 RUN mysql_secure_installation
+
