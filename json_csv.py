@@ -9,3 +9,7 @@ biz_csv_file = open('business.csv', 'r', encoding='utf-8', newline='')
 rev_csv_file = open('review.csv', 'r', encoding='utf-8', newline='')
 tip_csv_file = open('tip.csv', 'r', encoding='utf-8', newline='')
 
+lines = biz_json_file.readlins()
+writer = csv.writer(biz_csv_file)
+for line in lines:
+  json.loads(line)
