@@ -11,6 +11,11 @@ conn = mysql.connector.connect(user=user, passwd=password, database=database)
 cur = conn.cursor()
 
 
+miss_biz_num = 0
+miss_rev_num = 0
+miss_tip_num = 0
+
+
 biz_json_file = open('../business.json', 'r', encoding='utf-8')
 rev_json_file = open('../review.json', 'r', encoding='utf-8')
 tip_json_file = open('../tip.json', 'r', encoding='utf-8')
@@ -56,7 +61,8 @@ for line in lines:
   try:
     cur.execute(sql)
   except:
-    print(bid + 'made problem')
+    miss_biz_num += 1
+    print("(" + str(miss_biz_num) + "): " + bid + ' made problem')
   #print(name)
 
 biz_json_file.close()
@@ -97,7 +103,8 @@ for line in lines:
   try:
     cur.execute(sql)
   except:
-    print(bid + 'made problem')
+    miss_rev_num += 1
+    print("(" + str(miss_rev_num) + "): " + bid + ' made problem')
  # print(bid)
 
 rev_json_file.close()
@@ -133,7 +140,8 @@ for line in lines:
   try:
     cur.execute(sql)
   except:
-    print(bid + 'made problem')
+    miss_tip_num += 1
+    print("(" + str(miss_tip_num) + "): " + bid + ' made problem')
   #print(bid)
 
 tip_json_file.close()
