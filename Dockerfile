@@ -8,6 +8,5 @@ RUN apt install -y mysql-server && apt install -y python3 && apt install -y pyth
 RUN pip3 install mysql-connector-python
 
 # for mysql
-RUN service mysql start
-RUN mysql_secure_installation
-
+# RUN service mysql start
+# RUN mysql_secure_installation
