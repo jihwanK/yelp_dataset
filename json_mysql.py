@@ -53,7 +53,10 @@ for line in lines:
     cat = line_dict['categories']
   
   sql = 'INSERT INTO business VALUES ( "{bid}", "{name}", "{city}", "{state}", "{stars}", "{review_count}", "{categories}" )'.format(bid=bid, name=name, city=city, state=state, stars=stars, review_count=rev_cnt, categories=cat)
-  cur.execute(sql)
+  try:
+    cur.execute(sql)
+  except:
+    print(bid + 'made problem')
   #print(name)
 
 biz_json_file.close()
@@ -91,7 +94,10 @@ for line in lines:
     text = line_dict['text']
   
   sql = 'INSERT INTO review VALUES ( "{rid}", "{uid}", "{bid}", "{stars}", "{text}" )'.format(rid=rid, uid=uid, bid=bid, stars=stars, text=text)
-  cur.execute(sql)
+  try:
+    cur.execute(sql)
+  except:
+    print(bid + 'made problem')
  # print(bid)
 
 rev_json_file.close()
@@ -124,7 +130,10 @@ for line in lines:
     uid = line_dict['user_id']  
 
   sql = 'INSERT INTO tip VALUES ( "{text}", "{compliment_count}", "{bid}", "{uid}" )'.format(text=text, compliment_count=cmp_cnt, bid=bid, uid=uid)
-  cur.execute(sql)
+  try:
+    cur.execute(sql)
+  except:
+    print(bid + 'made problem')
   #print(bid)
 
 tip_json_file.close()
