@@ -4,7 +4,8 @@ import mysql.connector
 
 
 user = 'root'
-password = 'qlalfqjsgh1!'
+#password = 'qlalfqjsgh1!' # for my windows
+password = 'password' # for my mac
 database = 'yelp'
 
 conn = mysql.connector.connect(user=user, passwd=password, database=database)
@@ -16,9 +17,9 @@ miss_rev_num = 0
 miss_tip_num = 0
 
 
-biz_json_file = open('../business.json', 'r', encoding='utf-8')
-rev_json_file = open('../review.json', 'r', encoding='utf-8')
-tip_json_file = open('../tip.json', 'r', encoding='utf-8')
+biz_json_file = open('./dataset/business.json', 'r', encoding='utf-8')
+rev_json_file = open('./dataset/review.json', 'r', encoding='utf-8')
+tip_json_file = open('./dataset/tip.json', 'r', encoding='utf-8')
 
 
 ############

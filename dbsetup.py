@@ -1,7 +1,7 @@
 import mysql.connector
 
 user = 'root'
-password = 'qlalfqjsgh1!'
+password = 'password'
 # database = 'yelp'
 
 # conn = mysql.connector.connect(user=user, passwd=password, database=database)
